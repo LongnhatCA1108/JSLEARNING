@@ -1,3 +1,6 @@
+function printf(a){
+    console.log(a);
+}
 // window.alert("hello các bạn");
 /*
 //đây là ví dụ phần 1
@@ -114,18 +117,50 @@ if (b===c) console.log("==="); else console.log("=== phân biệt kiểu dữ li
 // Fullname.call(user)
 //------------------------------------------------------------------------------------------------------------
 //OPP trong js
-user = {
-    Fname: "long",
-    Lname: "Nhat",
-    Showname: function(){
-        console.log(this.Fname+" "+this.Lname)
+// user = {
+//     Fname: "long",
+//     Lname: "Nhat",
+//     Showname: function(){
+//         console.log(this.Fname+" "+this.Lname)
+//     }
+// }
+// Thuy = {
+//     Fname: 'hoang',
+//     Lname: 'Thuy'
+// }
+// Reflect.setPrototypeOf(Thuy,user)
+// console.log(Thuy)
+// user.Showname();
+// Thuy.Showname();
+// printf(Reflect.set(user,"Fname","superlong"))
+// printf(Reflect.get(user,"Fname"))
+//function constructor
+// function User(FirstName,LastName){
+//     this.Fname=FirstName,
+//     this.Lname=LastName
+// }
+// var Long= new User("Long","Nhat");
+// printf(Long)
+class User {
+    constructor(firstName,lastName){ //ham tao 
+   this.firstName=firstName
+   this.lastName=lastName
+   }
+    Showname(){
+        console.log(this.firstName+" "+this.lastName)
+    }
+   
+}
+class Customer extends User {
+    constructor(firstName,lastName,id){
+        super(firstName,lastName);
+        this.id=id;
+    }
+    Showid(){
+        this.Showname();
+        printf("myid: "+ this.id);
     }
 }
-Thuy = {
-    Fname: 'hoang',
-    Lname: 'Thuy'
-}
-Thuy.__proto__=user;
-console.log(Thuy)
-user.Showname();
-Thuy.Showname();
+var long = new User("long","Nhat")
+long.Showname();
+printf(long)
